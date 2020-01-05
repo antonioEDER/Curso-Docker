@@ -1,0 +1,11 @@
+criar arquivo Dockerfile
+escrever no docker file
+
+FROM nginx:latest
+RUN echo '<h1>Olá mundo!</h1>' > /usr/share/nginx/html/index.html
+
+#Criar imagem
+docker image build -t primeiro-build .
+
+#Cria container a partir da imagem
+docker container run -p 80:80 primeiro-build

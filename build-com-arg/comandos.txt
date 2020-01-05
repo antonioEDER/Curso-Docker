@@ -1,0 +1,19 @@
+Criar arquivo Dockerfile
+FROM debian
+ 
+LABEL maintainer 'Aluno <email>'
+ 
+ARG S3_BUCKET=files
+ENV S3_BUCKET=${S3_BUCKET}
+
+#criar imagem
+docker image build -t primeiro-build-com-args 
+
+# exibir argumento $S3_BUCKET no terminal
+docker container run primeiro-build-com-args bash -c 'echo $S3_BUCKET'
+
+# atribuir valor a argumento $S3_BUCKET
+docker image build --build-arg  S3_BUCKET=my-app -t primeiro-build-com-args .
+
+# Inspecionar argumento do Dockerfile
+docker image inspect --format="{{index .Config.Labels \"maintainer\"}}" primeiro-build-com-args

@@ -1,0 +1,20 @@
+
+Criar pasta no servidor host que armazena o docker
+$ mkdir curso-docker
+$ cd curso-docker
+
+$ mkdir exemplo-volumes
+$ cd  exemplo-volumes
+$ mkdir html + index.html
+docker container run --name apinodejs  -p 8081:80 -v  $(pwd)/html:/usr/share/nginx/html nginx
+
+Rodar servidor web em backgound
+$ mkdir curso-docker
+$ cd curso-docker
+
+$ mkdir exemplo-volumes
+$ cd  exemplo-volumes
+$ mkdir html + index.html
+docker container run -d --name apinodejs  -p 8081:80 -v  $(pwd)/html:/usr/share/nginx/html nginx
+
+
