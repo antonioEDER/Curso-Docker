@@ -1,0 +1,30 @@
+Tipos de redes
+ - None NetWork
+ - Bridge Network (Padrao)
+ - Host Network
+ - Overlay Network (Swarm)
+
+* Ver tipos de network
+ # docker network ls
+
+ * Subir container None NetWork
+ #  docker container run -d --net none debian
+
+ *Verificar se o container tem Network com Bridge
+  - obs: tem que aparece eth0
+        se só tiver lo é porque nao tem conexão
+ # docker container run --rm alpine ash -c "ifconfig"
+ # docker container exec -it  container2 ifconfig
+
+*Inspecionar rede Bridge
+# docker network inspect bridge
+
+* Cria container para teste
+# docker container run -d --name container1 alpine sleep 1000
+# docker container run -d --name container2 alpine sleep 1000
+
+* comparar rede entre dois containers por pings
+# docker container exec -it container1 ping 172.17.0.3
+
+*Criar uma rede
+# docker network create  --driver bridge rede_nova
