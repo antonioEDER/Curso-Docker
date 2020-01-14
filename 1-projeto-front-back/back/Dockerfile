@@ -12,5 +12,3 @@ RUN rm -rf /myapp
 
 WORKDIR /usr/back
 
-#RUN ["node", "server.js"]
-
