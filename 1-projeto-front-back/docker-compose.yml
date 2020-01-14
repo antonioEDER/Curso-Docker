@@ -1,0 +1,18 @@
+version: "3"
+services:
+  front:
+    build: ./front
+    volumes:
+      - ./front
+    ports:
+      - 80:80
+  back:
+    build: ./back
+    expose:
+      - 3000
+    volumes:
+      - ./back
+    ports:
+      - 3000:3000
+    restart: always
+    command: node server.js
