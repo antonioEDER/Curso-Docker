@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  server:
+    build: "."
+    volumes:
+      - ./:/node-app
+      - ./node_modules:/node-app/node_modules
+    depends_on:
+      - db
+    links: 
+      - db
+    networks:
+      - proxy
+    ports:
+      - "9000:9000"
+    restart: on-failure
+
+  db:
+    image: "mongo"
+    networks:
+      - proxy
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "27017:27017"
+
+networks:
+  proxy:
+    external:
+      name: proxy
