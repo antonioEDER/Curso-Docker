@@ -1,8 +1,7 @@
 FROM node:latest
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
+RUN mkdir -p /usr/src/front
+WORKDIR /usr/src/front
+COPY package.json /usr/src/front/
 RUN yarn install
-COPY . /usr/src/app
+COPY . /usr/src/front
 EXPOSE 8080
-CMD [ "yarn", "serve"]

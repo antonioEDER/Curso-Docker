@@ -3,7 +3,8 @@
     <p>ADD NOMES</p>
     <form @submit="add">
       <label for="">Nome</label>
-      <input v-model="nome" type="text" name="" id="" required>
+      <input v-model="username" type="text" name="username" id="" required>
+      <input v-model="useremail" type="text" name="useremail" id="" required>
       <button type="submit">Salvar</button>
     </form>
   </div>
@@ -15,13 +16,17 @@ export default {
   name: 'home',
   data: function () {
     return {
-      nome: null
+      username: null,
+      useremail: null
     }
   },
   methods: {
     add (e) {
-
-      this.axios.post('http://api:9000/add').then((response) => {
+      let params = {
+        username: this.username,
+        useremail: this.useremail
+      }
+      this.axios.post('http://localhost:3000/add', params).then((response) => {
         alert('Cadastro realizado!')
       })
       e.preventDefault();

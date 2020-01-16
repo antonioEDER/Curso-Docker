@@ -1,7 +1,31 @@
 version: "3.3"
 services:
-  api:
-    container_name: api
+  front:
+    container_name: front
     build: ./front/
+    depends_on: 
+      - back
     ports:
       - "8080:8080"
+    links: 
+      - back
+    command: yarn serve
+
+  back:
+    container_name: back
+    build: ./back/
+    depends_on: 
+      - mongo
+    ports:
+      - "3000:3000"
+    links: 
+      - mongo
+    command: node server.js
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./back/data:/data/db
+    ports:
+      - "27017:27017"
