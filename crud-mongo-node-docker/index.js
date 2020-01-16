@@ -12,7 +12,7 @@ const carros = require('./routes/carros');
 app.use('/api/carros', carros);
 
 mongoose
-  .connect('mongodb://172.24.0.2:27017/?compressors=zlib&gssapiServiceName=mongodb', {
+  .connect('mongodb://db:27017/?compressors=zlib&gssapiServiceName=mongodb', {
     useNewUrlParser: true
   })
   .then(result => {

@@ -27,4 +27,4 @@ Tipos de redes
 # docker container exec -it container1 ping 172.17.0.3
 
 *Criar uma rede
-# docker network create  --driver bridge rede_nova
+# docker network create  --driver bridge proxy
